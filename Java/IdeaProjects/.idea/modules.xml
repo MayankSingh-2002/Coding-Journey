@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/Basics/Basics.iml" filepath="$PROJECT_DIR$/Basics/Basics.iml" />
+      <module fileurl="file://$PROJECT_DIR$/Checking Alphabets/Checking Alphabets.iml" filepath="$PROJECT_DIR$/Checking Alphabets/Checking Alphabets.iml" />
+      <module fileurl="file://$PROJECT_DIR$/Hello World/Hello World.iml" filepath="$PROJECT_DIR$/Hello World/Hello World.iml" />
+      <module fileurl="file://$PROJECT_DIR$/Hello_World/Hello_World.iml" filepath="$PROJECT_DIR$/Hello_World/Hello_World.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/IdeaProjects.iml" filepath="$PROJECT_DIR$/.idea/IdeaProjects.iml" />
+      <module fileurl="file://$PROJECT_DIR$/Num_Print/Num_Print.iml" filepath="$PROJECT_DIR$/Num_Print/Num_Print.iml" />
+      <module fileurl="file://$PROJECT_DIR$/Vowel or Consonants/Vowel or Consonants.iml" filepath="$PROJECT_DIR$/Vowel or Consonants/Vowel or Consonants.iml" />
+      <module fileurl="file://$PROJECT_DIR$/com.example.javachallenge/com.example.javachallenge.iml" filepath="$PROJECT_DIR$/com.example.javachallenge/com.example.javachallenge.iml" />
+    </modules>
+  </component>
+</project>
