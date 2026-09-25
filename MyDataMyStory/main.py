@@ -1,15 +1,11 @@
 import RoutineExcel
 
+
 filename = "12612197.xlsx"
 
 data = RoutineExcel.read_data(filename)
 
 valid_data, invalid_records = RoutineExcel.validate_data(data)
-
-print("\nRecorded Dates:")
-
-for row in valid_data:
-    print(row[0])
 
 print("Total records:", len(data))
 print("Valid records:", len(valid_data))
@@ -21,7 +17,7 @@ averages = RoutineExcel.calculate_activity_averages(valid_data)
 
 activity_indices = RoutineExcel.calculate_activity_indices(valid_data)
 
-experience_index = RoutineExcel.caluclate_experience_index(valid_data)
+experience_index = RoutineExcel.calculate_experience_index(valid_data)
 
 DCI = RoutineExcel.calculate_dci(len(valid_data), expected_days)
 
@@ -29,7 +25,7 @@ PAI = RoutineExcel.calculate_pai(activity_indices,experience_index, DCI)
 
 sleep_energy = RoutineExcel.sleep_energy_analysis(valid_data)
 
-study_satisfaction = RoutineExcel.study_satisafaction_analysis(valid_data)
+study_satisfaction = RoutineExcel.study_satisfaction_analysis(valid_data)
 
 coding_energy = RoutineExcel.coding_energy_analysis(valid_data)
 
@@ -61,7 +57,7 @@ print("AAI: ",activity_indices["AAI"])
 print("PhAI: ",activity_indices["PhAI"])
 print("SRI: ",activity_indices["SRI"])
 print("ABI: ",activity_indices["ABI"])
-print("TUI: ",activity_indices["TPI"])
+print("TUI: ",activity_indices["TUI"])
 print("EI: ",experience_index)
 print("DCI: ", DCI)
 print("PAI: ", PAI)

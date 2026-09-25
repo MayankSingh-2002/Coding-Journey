@@ -91,13 +91,13 @@ def validate_data(data):
                     valid = False
                     break
 
-            if not isinstance(row[i], (int, float)):
-                valid = False
-                break
+                if not isinstance(row[i], (int, float)):
+                    valid = False
+                    break
 
-            if row[i] < 0:
-                valid = False
-                break
+                if row[i] < 0:
+                    valid = False
+                    break
 
             #Checking other column with qualitative values
             if row[10] not in FEELING_VALUES:
@@ -125,27 +125,41 @@ def check_continue_date(data):
     end_date = date(2026, 9, 21)
 
     expected_days = 0
+    
     missing_days = []
-
-    recorded_dates = []
-
-    for row in data:
-        recorded_date = row[0]
-
-        if hasattr(recorded_date, "date"):
-            recorded_date = recorded_date.date()
-
-        recorded_dates.append(recorded_date)
 
     current_date = start_date
 
+    #start
+
+    recorded_dates = [
+        row[0].date() if hasattr(row[0], 'date') else row[0] 
+        for row in data
+    ]
+
     while current_date <= end_date:
         expected_days += 1
-
         if current_date not in recorded_dates:
             missing_days.append(current_date)
-
         current_date = current_date + timedelta(days=1)
+
+    # End
+
+    # Start
+
+    # recorded_dates = []
+
+    # for row in data:
+    #     recorded_dates.append(row[0])
+
+    # while current_date <= end_date:
+
+    #     expected_days += 1
+
+    #     if current_date not in recorded_dates:
+    #         missing_days.append(current_date)
+
+    #     current_date = current_date + timedelta(days=1) # End
 
     return expected_days, missing_days
 
@@ -175,7 +189,7 @@ def calculate_activity_averages(data):
 
     return averages
 
-def caluclate_experience_index(data):
+def calculate_experience_index(data):
 
     total_experience = 0
 
@@ -220,9 +234,9 @@ def calculate_dci(valid_days, expected_days):
 
     return DCI
 
-def calculate_pai(indices, experinece_index, DCI):
+def calculate_pai(indices, experience_index, DCI):
 
-    PAI = (0.15*indices["TPI"] + 0.20*indices["AAI"] + 0.15*indices["PhAI"] + 0.20*indices["SRI"] + 0.15*indices["TUI"] + 0.10* experinece_index + DCI)
+    PAI = (0.15*indices["TPI"] + 0.20*indices["AAI"] + 0.15*indices["PhAI"] + 0.20*indices["SRI"] + 0.15*indices["TUI"] + 0.10*experience_index + 0.05*DCI)
 
     return PAI
 
@@ -264,7 +278,7 @@ def sleep_energy_analysis(data):
 
     return result
 
-def study_satisafaction_analysis(data):
+def study_satisfaction_analysis(data):
 
     very_satisfied = []
     satisfied = []
@@ -297,13 +311,13 @@ def study_satisafaction_analysis(data):
     if len(satisfied) > 0:
         result["Satisfied"] = calculate_list_average(satisfied)
 
-    if len("Neutral") > 0:
+    if len(neutral) > 0:
         result["Neutral"] = calculate_list_average(neutral)
 
     if len(unsatisfied) > 0:
         result["Unsatisfied"] = calculate_list_average(unsatisfied)
 
-    if len(very_satisfied) > 0:
+    if len(very_unsatisfied) > 0:
         result["Very Unsatisfied"] = calculate_list_average(very_unsatisfied)
 
     return result
@@ -318,6 +332,7 @@ def coding_energy_analysis(data):
 
         if row[12] == "High":
             high_coding.append(row[4])
+            
 
         elif row[12] == "Medium":
             medium_coding.append(row[4])
